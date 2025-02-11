@@ -1,0 +1,21 @@
+server:
+  port: 8184
+
+spring:
+  application:
+    name: product-service
+  jpa:
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    url: ENC(SBY/wvDWXxOdTOxCHLAkVcnipYxxvpyDIKM3XkmfTYvDSliH/zgGmHisqTcKBqGwIgv2QVhxu+ZZPGAuR75Q1XOC3kIm2eby)
+    username: ENC(vLLa/V5M32q4cn0UPR9L6+EXzkzb7zjF) # product_user
+    password: ENC(m6AkFxgQi0SmVqKW8BCi7f1N5ZXbZrUP) # product1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 20
+      maximum-pool-size: 30
+      connection-timeout: 30000

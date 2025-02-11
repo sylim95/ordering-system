@@ -1,0 +1,21 @@
+server:
+  port: 8185
+
+spring:
+  application:
+    name: order-service
+  jpa:
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    url: ENC(3ypnzKtLIYdTHxSmC0enstsYnSHT2yj85SxUAo0isUPVT+YNKbzuA9P8irvbGiKwDlfCovTtLCTULMKHgIJw2u8aRq7Rqern)
+    username: ENC(Uc0muQxRSQDpkdrNCH/x+Za2CnN0+8Ak) # order_user
+    password: ENC(+2YgvnvfgdWejUWoGTa5zNmbfgiZB/oN) # order1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 20
+      maximum-pool-size: 30
+      connection-timeout: 30000
