@@ -10,17 +10,18 @@
 ### DDD(Domain Driven Design)
 ![img_4.png](img_4.png)
 도메인 객체 중심의 설계를 위해 전술적 DDD를 따르며, Hexagonal Architecture를 적용하여 유연한 애플리케이션 구조를 구현하고자 했습니다.
-1. Core Domain Layer (Business Logic)
+
+#### Core Domain Layer (Business Logic)
 - 도메인 엔티티
 
-2. Application Layer (Use Cases / Ports)
+#### Application Layer (Use Cases / Ports)
 - Input Port
   - Use case
 - Output Port
   - RepositoryPort (DB 연결 인터페이스)
   - ExternalApiAdapter (외부 API 연결 인터페이스)
 
-3. Infrastructure Layer (Adapters)
+#### Infrastructure Layer (Adapters)
 - Input Adapter 
   - Controller 
 - Output Adapter 
