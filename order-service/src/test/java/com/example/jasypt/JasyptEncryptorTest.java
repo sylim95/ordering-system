@@ -1,5 +1,6 @@
 package com.example.jasypt;
 
+import io.micrometer.common.util.StringUtils;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 import org.junit.jupiter.api.Assertions;
@@ -44,7 +45,9 @@ class JasyptEncryptorTest {
         }
 
         public String decrypt(String message) {
-            return this.encryptor.decrypt(message);
+            if(StringUtils.isNotEmpty(message)) {
+                return this.encryptor.decrypt(message);
+            } else return message;
         }
     }
 }
