@@ -29,7 +29,7 @@ public class OrderQueryController {
      * @return List<OrderQueryResponse> 주문 정보 리스트
      * */
     @GetMapping
-    public List<OrderQueryResponse> findOrderList(@ModelAttribute @Valid OrderSearchRequest request) {
+    public List<OrderQueryResponse> findOrderList(@Valid OrderSearchRequest request) {
         return orderQueryUseCase.findAllOrderInfo(OrderSearchCommand.of(request))
                 .stream().map(OrderQueryResponse::of).toList();
     }
@@ -41,11 +41,21 @@ public class OrderQueryController {
      * @param request Optional: 조회 조건을 담은 요청 객체
      * @return List<OrderQueryResponse> 주문 정보 리스트
      * */
-    @GetMapping("/{customerId}")
+    @GetMapping("/customer/{customerId}")
     public List<OrderQueryResponse> findOrderListByCustomer(
             @PathVariable("customerId") Long customerId,
-            @ModelAttribute @Valid OrderSearchRequest request) {
+            @Valid OrderSearchRequest request) {
         return orderQueryUseCase.findAllOrderInfoByCustomerId(customerId, OrderSearchCommand.of(request))
                 .stream().map(OrderQueryResponse::of).toList();
+    }
+
+    /**
+     * 주문 아이디 기준 주문 정보 조회
+     * @param id: 주문 아이디
+     * @return OrderQueryResponse: 주문 정보
+     * */
+    @GetMapping("/{id}")
+    public OrderQueryResponse findOrderById(@PathVariable("id") String id) {
+        return OrderQueryResponse.of(orderQueryUseCase.findOrderById(id));
     }
 }

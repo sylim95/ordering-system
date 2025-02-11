@@ -34,6 +34,11 @@ public class OrderQueryService implements OrderQueryUseCase {
         return orderList;
     }
 
+    @Override
+    public Order findOrderById(String id) {
+        return loadOrderPort.loadOrderInfo(id);
+    }
+
     /**
      * 사용자 검색에 따른 필터
      * @param order

@@ -8,4 +8,5 @@ import java.util.List;
 public interface OrderQueryUseCase {
     List<Order> findAllOrderInfo(OrderSearchCommand command);
     List<Order> findAllOrderInfoByCustomerId(Long customerId, OrderSearchCommand command);
+    Order findOrderById(String id);
 }
