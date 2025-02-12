@@ -3,7 +3,6 @@ package com.example.orderservice;
 import com.example.orderservice.api.dto.resquest.OrderSaveRequest;
 import com.example.orderservice.app.domain.service.OrderCommandService;
 import com.example.orderservice.app.port.in.OrderSaveCommand;
-import jakarta.persistence.OptimisticLockException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +16,7 @@ import java.util.concurrent.Executors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class OrderSystemApplicationTests {
+class OrderServiceApplicationTests {
 
     @Autowired
     private OrderCommandService orderCommandService;
