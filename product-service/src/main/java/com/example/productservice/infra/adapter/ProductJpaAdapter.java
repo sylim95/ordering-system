@@ -1,6 +1,5 @@
 package com.example.productservice.infra.adapter;
 
-import com.example.common.error.exception.BusinessException;
 import com.example.productservice.app.domain.model.Product;
 import com.example.productservice.app.domain.model.ProductHistory;
 import com.example.productservice.app.port.out.LoadProductPort;
