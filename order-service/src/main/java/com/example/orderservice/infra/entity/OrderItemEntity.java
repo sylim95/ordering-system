@@ -24,11 +24,7 @@ public class OrderItemEntity {
     private String id;
 
     /**
-     * 주문 아이템(N)에서 주문(1)을 조회하는 경우는 드물지만,
-     * 데이터 삽입 시 `insert -> update` 흐름을 방지하기 위해 양방향 관계 설정.
-     *
-     * 단방향 관계로 설정할 경우 `order_id`는 연관 관계 없이 일반 컬럼으로 간주되어
-     * 초기 `null`로 삽입된 후 다시 `update`가 수행되는 문제가 발생할 수 있음
+     * 비즈니스 관점에서 1 -> N 조회가 자주 필요하기 때문에 양방향으로 설정
      */
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
