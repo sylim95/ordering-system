@@ -73,6 +73,7 @@ public class ProductCommandService implements ProductCommandUseCase {
         backoff = @Backoff(delay = 500)
     )
     public void updateProductStocks(List<ProductUpdateCommand> commands) {
+        log.info("제품 재고 업데이트 시작...");
         Map<Long, Product> productMap = loadProductPort.findAllProductInfoByIds(
                 commands.stream().map(ProductUpdateCommand::getId).toList()
         ).stream().collect(Collectors.toMap(Product::getId, Function.identity()));
