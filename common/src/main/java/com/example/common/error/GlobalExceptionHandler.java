@@ -5,7 +5,6 @@ import com.example.common.error.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -49,8 +48,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleException(Exception ex) {
-        log.error("handleException, {}", ex.getMessage());
-        String message = ex.getMessage() == null ? HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase() : ex.getMessage();
+        log.error("handleException, {}", ex.getLocalizedMessage());
+        if(ex.getCause() instanceof IllegalArgumentException illegalArgumentException) {
+            return handleException(illegalArgumentException);
+        }
+        String message = ex.getLocalizedMessage() == null ? HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase() : ex.getLocalizedMessage();
         final ApiResponse<Void> body = new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, message);
         return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
     }

@@ -7,11 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Slf4j
 @Getter
 @Builder
 @NoArgsConstructor
@@ -75,7 +76,8 @@ public class Product {
      */
     public void updateStock(int quantity) {
         if (this.quantity < quantity) {
-            throw new IllegalArgumentException("재고가 부족합니다.");
+            log.error("재고가 부족합니다. 재고 수량: {}, 요청 수량: {}", this.quantity, quantity);
+            throw new IllegalArgumentException("재고가 부족합니다. 재고 수량: " + this.quantity + ", 요청 수량: " + quantity);
         }
         this.quantity -= quantity;
     }
