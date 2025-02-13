@@ -1,4 +1,4 @@
-# Project Summary
+## Project Summary
 본 프로젝트는 멀티 모듈(Multi-Module) 기반의 Spring Boot 프로젝트로, 다음과 같은 모듈들로 구성되어 있습니다.
 
 - Common 모듈: 공통적으로 사용되는 응답 포맷, 예외 처리, 엔티티 등의 기능을 제공하는 모듈
@@ -55,7 +55,7 @@
     * 삭제: 주문 정보를 삭제할 때 `DELETE` 메소드를 사용했습니다.
 ### DataSource
 * Product DB와 Order DB의 접근을 분리하기 위해 각각 다른 계정을 사용하도록 설정했습니다.
-* 각 계정은 해당 스키마(Product 또는 Order)만 접근할 수 있습니다.
+* 각 계정은 해당 스키마(product 또는 order)만 접근할 수 있습니다.
 * 데이터소스(Datasource) 정보는 암호화된 후 Base64로 인코딩하여 저장됩니다.
   * 암호화 및 복호화 테스트는 `JasyptEncryptorTest`에서 확인할 수 있습니다.
 ### Entity 관계
